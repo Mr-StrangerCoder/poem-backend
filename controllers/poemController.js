@@ -1,14 +1,14 @@
-const Blog = require('../models/blogModel');
+const Poem = require('../models/poemModel');
 
 
-const createBlog = async (req, res) => {
+const createPoem = async (req, res) => {
     try {
-        const { title, description, author } = req.body;
-        const blog = await Blog.create({ title, description, author });
+        const { title, content,dedicate, author } = req.body;
+        const poem = await Poem.create({ title,content,dedicate, author });
         res.status(201).json({
             success: true,
-            message: 'Blog created successfully',
-            data: blog
+            message: 'Poem created successfully',
+            data: poem
         });
     } catch (err) {
         res.status(500).json({
@@ -19,12 +19,12 @@ const createBlog = async (req, res) => {
 };
 
 
-const getBlogs = async (req, res) => {
+const getPoems = async (req, res) => {
     try {
-        const blogs = await Blog.find();
+        const poems = await Poem.find();
         res.status(200).json({
             success: true,
-            data: blogs
+            data: poems
         });
     } catch (err) {
         res.status(500).json({
@@ -35,17 +35,17 @@ const getBlogs = async (req, res) => {
 };
 
 
-const updateBlog = async (req, res) => {
+const updatePoem = async (req, res) => {
     try {
-        const blog = await Blog.findByIdAndUpdate(
+        const poem = await Poem.findByIdAndUpdate(
             req.params.id,
             req.body,
             { new: true }
         );
         res.status(200).json({
             success: true,
-            message: 'Blog updated successfully',
-            data: blog
+            message: 'poem updated successfully',
+            data: poem
         });
     } catch (err) {
         res.status(500).json({
@@ -55,12 +55,12 @@ const updateBlog = async (req, res) => {
     }
 };
 
-const deleteBlog = async (req, res) => {
+const deletePoem = async (req, res) => {
     try {
-        await Blog.findByIdAndDelete(req.params.id);
+        await Poem.findByIdAndDelete(req.params.id);
         res.status(200).json({
             success: true,
-            message: 'Blog deleted successfully'
+            message: 'Poem deleted successfully'
         });
     } catch (err) {
         res.status(500).json({
@@ -70,4 +70,4 @@ const deleteBlog = async (req, res) => {
     }
 };
 
-module.exports = { createBlog, getBlogs, updateBlog, deleteBlog };
+module.exports = { createPoem, getPoems, updatePoem, deletePoem };

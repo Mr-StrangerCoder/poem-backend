@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 require('dotenv').config();
 const connectDB = require('./config/db');
+const poemRoutes = require('./routes/poemRoutes'); 
 
 const app = express();
 
@@ -12,9 +13,11 @@ connectDB();
 app.use(cors());
 app.use(express.json());
 
+app.use('/', poemRoutes); 
+
 
 app.get('/', (req, res) => {
-    res.send('Blog API is running...');
+    res.send('Poem API is running...');
 });
 
 

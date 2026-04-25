@@ -1,12 +1,17 @@
 const mongoose = require('mongoose');
 
-const blogSchema = new mongoose.Schema({
+const poemSchema = new mongoose.Schema({
     title: {
         type: String,
         required: true,
         trim: true
     },
-    description: {
+    poem: {
+        type: String,
+        required: true,
+        trim: true
+    },
+    dedicate: {
         type: String,
         required: true,
         trim: true
@@ -18,4 +23,5 @@ const blogSchema = new mongoose.Schema({
     }
 }, { timestamps: true });
 
-module.exports = mongoose.model('Blog', blogSchema);
+module.exports = mongoose.model('Poem', poemSchema);
+
