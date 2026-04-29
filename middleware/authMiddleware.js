@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 
-// Protect route - must be logged in
+
 const protect = (req, res, next) => {
     try {
         const token = req.headers.authorization?.split(' ')[1];

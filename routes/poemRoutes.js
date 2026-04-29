@@ -11,11 +11,11 @@ const {
 } = require('../controllers/poemController');
 const { protect } = require('../middleware/authMiddleware');
 
-// Public routes
+
 router.get('/poems', getPoems);
 router.get('/poem/:id', getSinglePoem);
 
-// Protected routes
+
 router.get('/my-poems', protect, getMyPoems);
 router.post('/create-poem', protect, createPoem);
 router.put('/update-poem/:id', protect, updatePoem);
